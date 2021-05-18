@@ -102,6 +102,6 @@ stages:
       displayName: 'Run unit tests - $(buildConfiguration)'
       inputs:
         command: 'test'
-        projects: '**/*Test.csproj'
+        projects: '**/*UITest.csproj'
         arguments: '--no-restore'
   
