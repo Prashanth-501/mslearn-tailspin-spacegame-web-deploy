@@ -3,7 +3,7 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
-  dotnetSdkVersion: '5.0.202'
+  dotnetSdkVersion: '3.1.300'
   
 #schedules:
 #- cron: '0 16 * * *'
@@ -27,7 +27,7 @@ stages:
 
     variables:
       wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-      dotnetSdkVersion: '5.0.202'
+      dotnetSdkVersion: '3.1.300'
 
     steps:
     - task: UseDotNet@2
