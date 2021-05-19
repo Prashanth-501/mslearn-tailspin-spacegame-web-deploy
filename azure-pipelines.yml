@@ -91,13 +91,14 @@ stages:
     - task: UseDotNet@2
       displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
       inputs:
+        packageType: 'sdk'
         version: '$(dotnetSdkVersion)'
     - task: DotNetCoreCLI@2
       displayName: 'Build the project - $(buildConfiguration)'
       inputs:
         command: 'build'
-        arguments: '--configuration $(buildConfiguration)'
         projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
+        arguments: '--configuration $(buildConfiguration)'
     - task: DotNetCoreCLI@2
       displayName: 'Run unit tests - $(buildConfiguration)'
       inputs:
