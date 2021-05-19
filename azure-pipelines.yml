@@ -88,21 +88,11 @@ stages:
    # variables:
    #- group: 'Release'
     steps: 
-    - task: UseDotNet@2
-      displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
+    - task: VSTest@2
       inputs:
-        packageType: 'sdk'
-        version: '$(dotnetSdkVersion)'
-    - task: DotNetCoreCLI@2
-      displayName: 'Build the project - $(buildConfiguration)'
-      inputs:
-        command: 'build'
-        projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
-        arguments: '--configuration $(buildConfiguration)'
-    - task: DotNetCoreCLI@2
-      displayName: 'Run unit tests - $(buildConfiguration)'
-      inputs:
-        command: 'test'
-        projects: '**/*UITests.csproj'
-        arguments: '--no-restore'
-  
+        testSelector: 'testAssemblies'
+        testAssemblyVer2: |
+          **\*test*.dll
+          !**\*TestAdapter.dll
+          !**\obj\**
+        searchFolder: '$(System.DefaultWorkingDirectory)'
