@@ -90,9 +90,7 @@ stages:
     steps: 
     - task: VSTest@2
       inputs:
-        testSelector: 'testAssemblies'
-        testAssemblyVer2: |
-          **\*test*.dll
-          !**\*TestAdapter.dll
-          !**\obj\**
-        searchFolder: '$(System.DefaultWorkingDirectory)'
+        testSelector: 'testRun'
+        searchFolder: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
+        runTestsInIsolation: true
+        codeCoverageEnabled: true
