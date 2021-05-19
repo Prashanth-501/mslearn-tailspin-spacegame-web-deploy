@@ -88,9 +88,7 @@ stages:
    # variables:
    #- group: 'Release'
     steps: 
-    - task: VSTest@2
+    - task: DotNetCoreCLI@2
       inputs:
-        testSelector: 'testRun'
-        searchFolder: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
-        runTestsInIsolation: true
-        codeCoverageEnabled: true
+        command: 'test'
+        projects: '$(System.DefaultWorkingDirectory)/**/*UITests.csproj'
